@@ -18,7 +18,9 @@ setup(
       install_requires = (
           'nagare==0.4.1',
           'ssh==1.7.13',
-          'Fabric==1.4.1'
+          'Fabric==1.4.1',
+          'jinja2==2.6',
+          'pyinotify==0.9.4',
       ),
       message_extractors = { 'cloudmgrws' : [('**.py', 'python', None)] },
       entry_points = """

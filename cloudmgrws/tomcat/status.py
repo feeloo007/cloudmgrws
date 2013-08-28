@@ -10,8 +10,7 @@ checks = {
     CHECK_LSOF_COMMAND 				: '/usr/sbin/lsof -w -a -u $LOGNAME -d ^mem -d ^cwd -d ^txt -d ^rtd -p $( pgrep -u $LOGNAME java )'
 }
 
-@cloudmgrws.tools.number_function_parameter( nb = 0 )
-@cloudmgrws.ssh_tools.manage_ssh
+@cloudmgrws.tools.dynamic_parameters()
 def status( topology_params, function_params, ssh, response, *args, **kwargs ):
 
      return cloudmgrws.ssh_tools.process_steps(

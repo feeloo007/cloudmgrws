@@ -9,8 +9,8 @@ commands = {
     RM_WORK_COMMAND	: 'source $HOME/.bash_profile ; rm -Rf $TOMCAT_HOME/work/Catalina/localhost/%s',
 }
 
-@cloudmgrws.tools.number_function_parameter( nb = 0 )
-@cloudmgrws.ssh_tools.manage_ssh
+
+@cloudmgrws.tools.dynamic_parameters()
 def rmwork( topology_params, function_params, ssh, response, *args, **kwargs ):
 
      return cloudmgrws.ssh_tools.process_steps(

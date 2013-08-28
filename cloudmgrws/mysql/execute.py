@@ -2,8 +2,24 @@
 import  cloudmgrws.tools
 import  cloudmgrws.ssh_tools
 
-@cloudmgrws.tools.number_function_parameter( nb = 0 )
-@cloudmgrws.ssh_tools.manage_ssh
+def get_l_databases( topology_params, function_params, ssh, response, *args, **kwargs ):
+    return [ '*' ]
+
+def get_l_executables( topology_params, function_params, ssh, response, *args, **kwargs ):
+    return [ 'script.sql' ]
+
+@cloudmgrws.tools.dynamic_parameters(
+    [
+        cloudmgrws.tools.DynamicParamNameAndDynamicAccessor(
+            'database',
+            get_l_databases
+        ),
+        cloudmgrws.tools.DynamicParamNameAndDynamicAccessor(
+            'executable',
+            get_l_executables
+        ),
+    ],
+)
 def execute( topology_params, function_params, ssh, response, *args, **kwargs ):
 
      return cloudmgrws.ssh_tools.process_steps(

@@ -14,9 +14,8 @@ checks = {
     SLEEP_COMMAND				: 'sleep 2',
 }
 
-@cloudmgrws.tools.number_function_parameter( nb = 0 )
 @tools.topology_params
-@cloudmgrws.ssh_tools.manage_ssh
+@cloudmgrws.tools.dynamic_parameters()
 def shutdown( topology_params, function_params, ssh, response, *args, **kwargs ):
 
      return cloudmgrws.ssh_tools.process_steps(

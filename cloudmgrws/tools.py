@@ -34,20 +34,6 @@ def catch_not_found( f ):
     return wrapped
 
 
-def number_function_parameter( nb = 0, function_params_accessors = [] ):
-    def wrapper( f ):
-        assert( nb == len( function_params_accessors ) ), 'Big Bug'
-        f._nb_optional_params 		= nb
-        f._function_params_accessors	= function_params_accessors
-        @functools.wraps( f )
-        def wrapped( topology_params, function_params, *args, **kwargs ):
-            if nb != len( function_params ):
-               raise HTTPConflict()
-            return f( topology_params, function_params, *args, **kwargs )
-        return wrapped
-    return wrapper
-
-
 DynamicParamNameAndDynamicAccessor = 					\
     namedtuple( 'DynamicParamNameAndDynamicAccessor', [ 'param_name', 'param_accessor' ] )
 

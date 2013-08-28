@@ -65,6 +65,12 @@ def dynamic_parameters(
         @functools.wraps( f )
         def wrapped( topology_params, function_params, ssh, response, *args, **kwargs ):
 
+            NamedFunctionParams =                    			\
+                namedtuple(
+                    'NamedFunctionParams',
+                    []
+                )
+
             if len( function_params ) > len( d_dynamic_param_name_and_dynamic_accessor ):
                 raise HTTPConflict()
 
@@ -91,11 +97,25 @@ def dynamic_parameters(
                             # dealed on ssh_tools
                             raise HTTPConflict()
 
+                        NamedFunctionParams =                    	\
+                            namedtuple(
+                                'NamedFunctionParams',
+                                d_dynamic_param_name_and_dynamic_accessor.keys()[
+                                    :i + 1
+                                ],
+                            )
+
                         if i + 1 < len( d_dynamic_param_name_and_dynamic_accessor ):
-                            l_valid_params              =                       \
-                                 d_dynamic_param_name_and_dynamic_accessor.values()[ i + 1 ](
+
+
+                            l_valid_params              =               \
+                                 d_dynamic_param_name_and_dynamic_accessor.values()[
+                                     i + 1
+                                 ](
                                      topology_params,
-                                     function_params,
+                                     NamedFunctionParams(
+                                         *function_params[ :i + 1 ]
+                                     ),
                                      ssh,
                                      response,
                                      *args,
@@ -115,7 +135,16 @@ def dynamic_parameters(
 
                     raise e
 
-            return f( topology_params, function_params, ssh, response, *args, **kwargs )
+            return f(								\
+                topology_params,
+                NamedFunctionParams(
+                    *function_params
+                ),
+                ssh,
+                response,
+                *args,
+                **kwargs
+           )
 
         return wrapped
     return wrapper

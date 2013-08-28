@@ -147,8 +147,8 @@ class Cloudmgrws(object):
                )
 
     def get_next( self, url ):
-        print url
-        print Cloudmgrws._d_keys_next.get( len( url ) - 1, lambda *args: {} )
+        #print url
+        #print Cloudmgrws._d_keys_next.get( len( url ) - 1, lambda *args: {} )
         return Cloudmgrws._d_keys_next.get( len( url ) - 1, lambda *args: {} )( self, url )
 
 def format_response( 

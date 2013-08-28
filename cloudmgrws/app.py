@@ -251,7 +251,7 @@ def parse_command( f ):
                             e.content_type      = 'application/json'
                             e.body		= format_response(
                                                       is_ok                     = False,
-                                                      information_message	= u'''%s not possible on /%s for %s''' % ( '/'.join( url[ i+1: ] ) , '/'.join( url[ :i ] ), u ),
+                                                      information_message	= u'''%s not valid on /%s for %s''' % ( '/'.join( url[ i+1: ] ) , '/'.join( url[ :i ] ), u ),
                                                       has_been_executed         = False,
                                        		      steps			= [],
                                                       next                      = [],

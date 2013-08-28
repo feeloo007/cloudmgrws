@@ -11,7 +11,7 @@ import  fabric.api
 import  fabric.utils
 import 	exceptions
 from    fabric.exceptions       import NetworkError
-from    webob.exc               import HTTPOk, HTTPNotFound, HTTPServiceUnavailable
+from    webob.exc               import HTTPOk, HTTPConflict, HTTPServiceUnavailable
 
 HAS_BEEN_EXECUTED			= 'has_been_executed'
 STEPS					= 'steps'
@@ -127,13 +127,21 @@ def manage_ssh( f ):
             else:
                 app_e.information_message 	= 'bad username (%s) or auth key issue' % lookup( remote_server_name )
             raise app_e
+        except HTTPConflict, e:
+            # Added for exit on failed dynamic param check
+            raise e
+        except HTTPOk, e:
+            # Added for exit on non complete dynamic params
+            raise e
         except Exception, e:
             # abnormal exit
-            print e.__class__
+            import traceback
+            traceback.print_exc()
             assert( False ), 'Big Bug'
         except:
             # abnormal exit
-            print sys.exc_info()
+            import traceback
+            traceback.print_exc()
             assert( False ), 'Very Big Bug'
         finally:
             if ssh:

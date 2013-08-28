@@ -17,7 +17,6 @@ HAS_BEEN_EXECUTED			= 'has_been_executed'
 STEPS					= 'steps'
 STEP_NAME				= 'step_name'
 SHELL_COMMAND				= 'shell_command'
-SHELL_PARAMS				= 'shell_params'
 TESTS					= 'tests'
 TEST_NAME				= 'test_name'
 TEST_STATUS				= 'test_status'
@@ -158,9 +157,7 @@ def manage_ssh( f ):
 
 def exec_command( step_name, shell_command, ssh, response, *args, **kwargs ):
 
-    shell_params = kwargs.get( SHELL_PARAMS, () )
-
-    stdin, stdout, stderr = ssh.exec_command( shell_command % shell_params )
+    stdin, stdout, stderr = ssh.exec_command( shell_command )
     r = { 
 	STEP_NAME	: '[ STEP %s ] : %s' % ( len( response.execution[ STEPS ] ) + 1, step_name ),
         RETURN_CODE   	: stdout.channel.recv_exit_status(),
@@ -179,7 +176,6 @@ def process_steps( steps, ssh, response, *args, **kwargs ):
             step[ SHELL_COMMAND ],
             ssh,
             response,
-            shell_params = step.get( SHELL_PARAMS, () ),
 	)
 
         response.datas.append(

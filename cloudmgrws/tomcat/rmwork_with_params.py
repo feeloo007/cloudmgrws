@@ -6,7 +6,7 @@ import 	time
 RM_WORK_COMMAND         = 'rm_work'
 
 checks = {
-    RM_WORK_COMMAND	: 'source $HOME/.bash_profile ; ls $TOMCAT_HOME/work/Catalina/localhost/%s',
+    RM_WORK_COMMAND	: 'source $HOME/.bash_profile ; ls $TOMCAT_HOME/work/Catalina/localhost/{directory}',
 }
 
 def get_l_working_dirs( topology_params, function_params, ssh, response, *args, **kwargs ):
@@ -26,8 +26,7 @@ def rmwork( topology_params, function_params, ssh, response, *args, **kwargs ):
          [
              {
                  cloudmgrws.ssh_tools.STEP_NAME         : RM_WORK_COMMAND,
-                 cloudmgrws.ssh_tools.SHELL_COMMAND     : checks[ RM_WORK_COMMAND ],
-                 cloudmgrws.ssh_tools.SHELL_PARAMS      : function_params,
+                 cloudmgrws.ssh_tools.SHELL_COMMAND     : checks[ RM_WORK_COMMAND ].format( **function_params._asdict() ),
                  cloudmgrws.ssh_tools.TESTS             : [
                                                            {
                                                             cloudmgrws.ssh_tools.TEST_NAME              : cloudmgrws.ssh_tools.IS_RETURN_CODE_INCORRECT,

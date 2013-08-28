@@ -18,8 +18,7 @@ def status( topology_params, function_params, ssh, response, *args, **kwargs ):
          [
              {
                  cloudmgrws.ssh_tools.STEP_NAME         : CHECK_PID_COMMAND,
-                 cloudmgrws.ssh_tools.SHELL_COMMAND     : checks[ CHECK_PID_COMMAND ],
-                 cloudmgrws.ssh_tools.SHELL_PARAMS      : (),
+                 cloudmgrws.ssh_tools.SHELL_COMMAND     : checks[ CHECK_PID_COMMAND ].format( **function_params._asdict() ),
                  cloudmgrws.ssh_tools.TESTS             : [
                                                            {
                                                             cloudmgrws.ssh_tools.TEST_NAME              : cloudmgrws.ssh_tools.IS_PROCESS_NUMBER_INCORRECT,
@@ -31,7 +30,7 @@ def status( topology_params, function_params, ssh, response, *args, **kwargs ):
                                                             cloudmgrws.ssh_tools.TEST_NAME              : cloudmgrws.ssh_tools.IS_RETURN_CODE_INCORRECT,
                                                             cloudmgrws.ssh_tools.TEST_STATUS            : lambda result: result[ cloudmgrws.ssh_tools.RETURN_CODE ],
                                                             cloudmgrws.ssh_tools.TEST_IS_IN_ERROR       : lambda status: status <> 0,
-                                                            cloudmgrws.ssh_tools.TEST_ERROR_MESSAGE     : lambda status: 'Error executing %s' % checks[ CHECK_PID_COMMAND ],
+                                                            cloudmgrws.ssh_tools.TEST_ERROR_MESSAGE     : lambda status: 'Error executing %s' % checks[ CHECK_PID_COMMAND ].format( **function_params._asdict() ),
                                                            },
                                                            {
                                                             cloudmgrws.ssh_tools.TEST_NAME              : cloudmgrws.ssh_tools.HAVE_STDERR,

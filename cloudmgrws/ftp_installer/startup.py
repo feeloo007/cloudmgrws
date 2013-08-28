@@ -23,8 +23,7 @@ def startup( topology_params, function_params, ssh, response, *args, **kwargs ):
              # Si le proceccus n'existe pas l'arret est annule
              { 
                  cloudmgrws.ssh_tools.STEP_NAME		: CHECK_SCREEN_COMMAND,
-                 cloudmgrws.ssh_tools.SHELL_COMMAND	: checks[ CHECK_SCREEN_COMMAND ],
-                 cloudmgrws.ssh_tools.SHELL_PARAMS	: (),
+                 cloudmgrws.ssh_tools.SHELL_COMMAND	: checks[ CHECK_SCREEN_COMMAND ].format( **function_params._asdict() ),
                  cloudmgrws.ssh_tools.TESTS		: [
                                                            {
                                                             cloudmgrws.ssh_tools.TEST_NAME              : cloudmgrws.ssh_tools.IS_PROCESS_NUMBER_INCORRECT,
@@ -36,7 +35,7 @@ def startup( topology_params, function_params, ssh, response, *args, **kwargs ):
                                                             cloudmgrws.ssh_tools.TEST_NAME              : cloudmgrws.ssh_tools.IS_RETURN_CODE_INCORRECT,
                                                             cloudmgrws.ssh_tools.TEST_STATUS            : lambda result: result[ cloudmgrws.ssh_tools.RETURN_CODE ],
                                                             cloudmgrws.ssh_tools.TEST_IS_IN_ERROR       : lambda status: status == 0,
-                                                            cloudmgrws.ssh_tools.TEST_ERROR_MESSAGE     : lambda status: 'Error executing %s. Startup aborted.' % checks[ CHECK_SCREEN_COMMAND ],
+                                                            cloudmgrws.ssh_tools.TEST_ERROR_MESSAGE     : lambda status: 'Error executing %s. Startup aborted.' % checks[ CHECK_SCREEN_COMMAND ].format( **function_params._asdict() ),
                                                            },
                                                            {
                                                             cloudmgrws.ssh_tools.TEST_NAME              : cloudmgrws.ssh_tools.HAVE_STDERR,
@@ -49,15 +48,14 @@ def startup( topology_params, function_params, ssh, response, *args, **kwargs ):
              # Demande d'arret via une commande standard
              {
                  cloudmgrws.ssh_tools.STEP_NAME         : STARTUP_COMMAND,
-                 cloudmgrws.ssh_tools.SHELL_COMMAND     : checks[ STARTUP_COMMAND ],
-                 cloudmgrws.ssh_tools.SHELL_PARAMS      : (),
+                 cloudmgrws.ssh_tools.SHELL_COMMAND     : checks[ STARTUP_COMMAND ].format( **function_params._asdict() ),
                  cloudmgrws.ssh_tools.TESTS             : [
                                                            {
                                                             cloudmgrws.ssh_tools.TEST_NAME              : cloudmgrws.ssh_tools.IS_RETURN_CODE_INCORRECT,
 							    cloudmgrws.ssh_tools.TEST_EXIT_ON_ERROR	: False,
                                                             cloudmgrws.ssh_tools.TEST_STATUS            : lambda result: result[ cloudmgrws.ssh_tools.RETURN_CODE ],
                                                             cloudmgrws.ssh_tools.TEST_IS_IN_ERROR       : lambda status: status <> 0,
-                                                            cloudmgrws.ssh_tools.TEST_ERROR_MESSAGE     : lambda status: 'Error executing %s. Startup aborted.' % checks[ CHECK_SCREEN_COMMAND ],
+                                                            cloudmgrws.ssh_tools.TEST_ERROR_MESSAGE     : lambda status: 'Error executing %s. Startup aborted.' % checks[ CHECK_SCREEN_COMMAND ].format( **function_params._asdict() ),
                                                            },
                                                            {
                                                             cloudmgrws.ssh_tools.TEST_NAME              : cloudmgrws.ssh_tools.HAVE_STDERR,
@@ -71,14 +69,13 @@ def startup( topology_params, function_params, ssh, response, *args, **kwargs ):
              # Attente avant test
              {
                  cloudmgrws.ssh_tools.STEP_NAME         : SLEEP_COMMAND,
-                 cloudmgrws.ssh_tools.SHELL_COMMAND     : checks[ SLEEP_COMMAND ],
-                 cloudmgrws.ssh_tools.SHELL_PARAMS      : (),
+                 cloudmgrws.ssh_tools.SHELL_COMMAND     : checks[ SLEEP_COMMAND ].format( **function_params._asdict() ),
                  cloudmgrws.ssh_tools.TESTS             : [
                                                            {
                                                             cloudmgrws.ssh_tools.TEST_NAME              : cloudmgrws.ssh_tools.IS_RETURN_CODE_INCORRECT,
                                                             cloudmgrws.ssh_tools.TEST_STATUS            : lambda result: result[ cloudmgrws.ssh_tools.RETURN_CODE ],
                                                             cloudmgrws.ssh_tools.TEST_IS_IN_ERROR       : lambda status: status <> 0,
-                                                            cloudmgrws.ssh_tools.TEST_ERROR_MESSAGE     : lambda status: 'Error executing %s. Startup aborted.' % checks[ CHECK_SCREEN_COMMAND ],
+                                                            cloudmgrws.ssh_tools.TEST_ERROR_MESSAGE     : lambda status: 'Error executing %s. Startup aborted.' % checks[ CHECK_SCREEN_COMMAND ].format( **function_params._asdict() ),
                                                            },
                                                            {
                                                             cloudmgrws.ssh_tools.TEST_NAME              : cloudmgrws.ssh_tools.HAVE_STDERR,
@@ -93,8 +90,7 @@ def startup( topology_params, function_params, ssh, response, *args, **kwargs ):
              # les tests continuent
              {
                  cloudmgrws.ssh_tools.STEP_NAME         : CHECK_SCREEN_COMMAND,
-                 cloudmgrws.ssh_tools.SHELL_COMMAND     : checks[ CHECK_SCREEN_COMMAND ],
-                 cloudmgrws.ssh_tools.SHELL_PARAMS      : (),
+                 cloudmgrws.ssh_tools.SHELL_COMMAND     : checks[ CHECK_SCREEN_COMMAND ].format( **function_params._asdict() ),
                  cloudmgrws.ssh_tools.TESTS             : [
                                                            {
                                                             cloudmgrws.ssh_tools.TEST_NAME              : cloudmgrws.ssh_tools.IS_PROCESS_NUMBER_INCORRECT,
@@ -110,7 +106,7 @@ def startup( topology_params, function_params, ssh, response, *args, **kwargs ):
                                                             cloudmgrws.ssh_tools.TEST_EXIT_ON_NO_ERROR  : True,
                                                             cloudmgrws.ssh_tools.TEST_STATUS            : lambda result: result[ cloudmgrws.ssh_tools.RETURN_CODE ],
                                                             cloudmgrws.ssh_tools.TEST_IS_IN_ERROR       : lambda status: status <> 0,
-                                                            cloudmgrws.ssh_tools.TEST_ERROR_MESSAGE     : lambda status: 'Error executing %s. Startup aborted.' % checks[ CHECK_SCREEN_COMMAND ],
+                                                            cloudmgrws.ssh_tools.TEST_ERROR_MESSAGE     : lambda status: 'Error executing %s. Startup aborted.' % checks[ CHECK_SCREEN_COMMAND ].format( **function_params._asdict() ),
                                                            },
                                                            {
                                                             cloudmgrws.ssh_tools.TEST_NAME              : cloudmgrws.ssh_tools.HAVE_STDERR,

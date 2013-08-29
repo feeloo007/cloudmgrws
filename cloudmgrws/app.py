@@ -279,37 +279,24 @@ def parse_command( f ):
                         except HTTPOk, e:
 
                             e.content_type      = 'application/json'
-                            if not hasattr( e, 'next' ):
-                                # L'enemble des parametres etait present
-                                # L'executio a eu lieu
-                                e.body              = format_response(
-                                                          is_ok             	= e.is_ok,
-                                                          information_message	= e.information_message,
-                                                          has_been_executed 	= e.execution[ ssh_tools.HAS_BEEN_EXECUTED ],
-                                                          steps			= e.execution[ ssh_tools.STEPS ],
-                                                          next              	= [],
-                                                          datas                 = e.datas,
-                                                          accepted_commands 	= [],
-                                                      )
-                                del( e.is_ok )
-                                del( e.information_message )
-                                del( e.execution )
-                                del( e.datas  )
+                            e.body              = 			\
+                                format_response(
+                                    is_ok             	= e.is_ok,
+                                    information_message	= e.information_message,
+                                    has_been_executed 	= e.execution[ ssh_tools.HAS_BEEN_EXECUTED ],
+                                    steps		= e.execution[ ssh_tools.STEPS ],
+                                    next              	= e.next,
+                                    datas               = e.datas,
+                                    accepted_commands 	= e.accepted_commands
+                                )
 
-                            else:
-                                # L'ensemble des parametres n'etait pas present
-                                # L'executio n'a pas eu lieu
-                                # On dindique les niveaux suivant
-                                e.body              = format_response(
-                                                          is_ok           	= True,
-                                                          information_message	= 'Mandatory params in next',
-                                                          has_been_executed	= False,
-                                                          steps			= [],
-                                                          next         		= e.next,
-                                                          datas          	= [],
-                                                          accepted_commands	= [],
-                          	                      )
-                                del( e.next )
+                            del( e.is_ok )
+                            del( e.information_message )
+                            del( e.execution )
+                            del( e.next  )
+                            del( e.datas )
+                            del( e.accepted_commands )
+
 
                             raise e
 

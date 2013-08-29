@@ -13,6 +13,8 @@ import 	exceptions
 from    fabric.exceptions       import NetworkError
 from    webob.exc               import HTTPOk, HTTPConflict, HTTPServiceUnavailable
 
+import 	os
+
 HAS_BEEN_EXECUTED			= 'has_been_executed'
 STEPS					= 'steps'
 STEP_NAME				= 'step_name'
@@ -161,8 +163,8 @@ def exec_command( step_name, shell_command, ssh, response, *args, **kwargs ):
     r = { 
 	STEP_NAME	: '[ STEP %s ] : %s' % ( len( response.execution[ STEPS ] ) + 1, step_name ),
         RETURN_CODE   	: stdout.channel.recv_exit_status(),
-        STDOUT		: [ line.decode( 'iso8859', 'replace' ) for line in stdout.readlines() ],
-	STDERR		: [ line.decode( 'iso8859', 'replace' ) for line in stderr.readlines() ],
+        STDOUT		: [ line.rstrip( os.linesep ).decode( 'iso8859', 'replace' ) for line in stdout.readlines() ],
+	STDERR		: [ line.rstrip( os.linesep ).decode( 'iso8859', 'replace' ) for line in stderr.readlines() ],
     }
     response.execution[ STEPS ].append( r )
     return r

@@ -93,7 +93,9 @@ def manage_ssh( f ):
                                            HAS_BEEN_EXECUTED 	: False, 
                                            STEPS		: [],
                                           }
+        response.next                  	= {}
         response.datas                  = []
+        response.accepted_commands      = []
         response.is_ok                  = False
 
     	remote_server_name          	= '%s-%s-%s-%s-%s' % (

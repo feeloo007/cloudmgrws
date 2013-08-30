@@ -124,18 +124,21 @@ def dynamic_parameters(
 
                 if len( function_params ) < len( d_dynamic_param_name_and_dynamic_accessor ):
 
-                    e                           = HTTPOk()
-                    e.next                      =                               \
-                       {
-                           d_dynamic_param_name_and_dynamic_accessor.keys()[
-                               len( function_params )
-                           ]:                                                   \
-                               l_valid_params
-                       }
+                    if response.is_ok:
+                        response.next               	=            	\
+                           {
+                               d_dynamic_param_name_and_dynamic_accessor.keys()[
+                                   len( function_params )
+                               ]:                                       \
+                                   l_valid_params,
+                           }
 
-                    raise e
+                        response.information_message	=		\
+                           'Mandatory params in next'
 
-            return f(								\
+                    raise response
+
+            return f(							\
                 topology_params,
                 NamedFunctionParams(
                     *function_params

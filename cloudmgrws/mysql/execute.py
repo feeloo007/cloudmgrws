@@ -177,8 +177,14 @@ def execute( topology_params, function_params, ssh, response, *args, **kwargs ):
                                cloudmgrws.ssh_tools.TEST_IS_IN_ERROR       : lambda status: status <> 0,
                                cloudmgrws.ssh_tools.TEST_ERROR_MESSAGE     : lambda status: 'Error executing %s' % shell,
                           },
+                          {
+                               cloudmgrws.ssh_tools.TEST_NAME              : cloudmgrws.ssh_tools.HAVE_STDERR,
+                               cloudmgrws.ssh_tools.TEST_STATUS            : lambda result: len( result[ cloudmgrws.ssh_tools.STDERR ] ),
+                               cloudmgrws.ssh_tools.TEST_IS_IN_ERROR       : lambda status: status > 0,
+                               cloudmgrws.ssh_tools.TEST_ERROR_MESSAGE     : lambda status: 'Look at stderr. Potential error',
+                          },
                      ]
-             },
+             }
          ],
          ssh,
          response,

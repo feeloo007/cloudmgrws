@@ -6,7 +6,7 @@ import 	time
 RM_WORK_COMMAND         = 'rm_work'
 
 checks = {
-    RM_WORK_COMMAND	: 'source $HOME/.bash_profile ; ls $TOMCAT_HOME/work/Catalina/localhost/{directory}',
+    RM_WORK_COMMAND	: 'source $HOME/.bash_profile ; rm -Rf $TOMCAT_HOME/work/Catalina/localhost/{directory}',
 }
 
 def get_l_working_dirs( topology_params, function_params, ssh, response, *args, **kwargs ):

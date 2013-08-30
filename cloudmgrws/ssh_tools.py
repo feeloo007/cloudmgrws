@@ -199,7 +199,7 @@ def process_steps( steps, ssh, response, *args, **kwargs ):
                 return response
             if test_is_in_error and t.get( TEST_EXIT_ON_ERROR, True ):
                 response.information_message           	= t[ TEST_ERROR_MESSAGE ]( test_status )	
-	    	return response
+                raise response
 
     response.execution[ HAS_BEEN_EXECUTED ]     = True
     response.is_ok                              = True

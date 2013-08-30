@@ -173,6 +173,12 @@ def exec_command( step_name, shell_command, ssh, response, *args, **kwargs ):
 
 def process_steps( steps, ssh, response, *args, **kwargs ):
 
+    # A chaqued debut de process_steps on reinitialise les etats d'execution globales
+    # Ceci est necessaire car process_steps est aussi utiliser par les accessors 
+    # de parametres dynamiques avant de realliser l'execution reelle.
+    response.execution[ HAS_BEEN_EXECUTED ]     = False
+    response.is_ok                              = False
+
     for step in steps:
 
         result = exec_command(

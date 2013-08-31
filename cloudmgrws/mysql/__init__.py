@@ -4,6 +4,7 @@ from 	cloudmgrws.mysql.startup  	import  startup
 from 	cloudmgrws.mysql.shutdown 	import  shutdown
 from 	cloudmgrws.mysql.execute 	import  execute
 from 	cloudmgrws.mysql.dump 		import  dump
+from 	cloudmgrws.mysql.rm_dumpfile 	import  rm_dumpfile
 
 from    jinja2                          import  			\
             Environment, 						\
@@ -59,6 +60,14 @@ d_envs    		=						\
                     PackageLoader(
                         __name__,
                         'dump_templates'
+                )
+           ),
+        'rm_dumpfile'	:
+            Environment(
+                loader =						\
+                    PackageLoader(
+                        __name__,
+                        'rm_dumpfile_templates'
                 )
            ),
     }

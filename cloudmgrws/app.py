@@ -112,6 +112,8 @@ class Cloudmgrws(object):
                            'SHUTDOWN'	: mysql.shutdown,
                            'EXECUTE'	: mysql.execute,
                            'DUMP'	: mysql.dump,
+			   'RM_DUMPFILE'				\
+                                        : mysql.rm_dumpfile,
                           },
     }
 

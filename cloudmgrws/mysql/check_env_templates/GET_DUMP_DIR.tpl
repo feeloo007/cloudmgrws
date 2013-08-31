@@ -1,0 +1,1 @@
+echo "$DUMP_DIR"

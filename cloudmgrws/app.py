@@ -114,6 +114,7 @@ class Cloudmgrws(object):
                            'DUMP'	: mysql.dump,
 			   'RM_DUMPFILE'				\
                                         : mysql.rm_dumpfile,
+                           'CHECK_ENV'	: mysql.check_env,
                           },
     }
 

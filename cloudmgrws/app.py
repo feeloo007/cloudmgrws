@@ -111,6 +111,7 @@ class Cloudmgrws(object):
                            'STARTUP'	: mysql.startup,
                            'SHUTDOWN'	: mysql.shutdown,
                            'EXECUTE'	: mysql.execute,
+                           'DUMP'	: mysql.dump,
                           },
     }
 

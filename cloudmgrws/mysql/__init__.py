@@ -3,6 +3,7 @@ from 	cloudmgrws.mysql.status   	import  status
 from 	cloudmgrws.mysql.startup  	import  startup
 from 	cloudmgrws.mysql.shutdown 	import  shutdown
 from 	cloudmgrws.mysql.execute 	import  execute
+from 	cloudmgrws.mysql.dump 		import  dump
 
 from    jinja2                          import  			\
             Environment, 						\
@@ -50,6 +51,14 @@ d_envs    		=						\
                     PackageLoader(
                         __name__,
                         'execute_templates'
+                )
+           ),
+        'dump'	:
+            Environment(
+                loader =						\
+                    PackageLoader(
+                        __name__,
+                        'dump_templates'
                 )
            ),
     }

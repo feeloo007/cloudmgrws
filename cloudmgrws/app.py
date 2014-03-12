@@ -3,6 +3,7 @@ import	generate_config_ssh
 import 	tools
 import 	ssh_tools
 import 	tomcat
+import  jboss
 import 	mysql
 import	httpd
 import 	ftp_installer
@@ -105,6 +106,11 @@ class Cloudmgrws(object):
                            'SHUTDOWN'		: tomcat.shutdown,
                            'RMWORK'		: tomcat.rmwork,
                            'RMWORK_WITH_PARAMS'	: tomcat.rmwork_with_params,
+                          },
+        ( 'JBOSS' )    : {
+                           'STATUS'             : jboss.status,
+                           'STARTUP'            : jboss.startup,
+                           'SHUTDOWN'           : jboss.shutdown,
                           },
         ( 'MYSQL' )	: {
                            'STATUS'	: mysql.status,

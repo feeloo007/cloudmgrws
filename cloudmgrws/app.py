@@ -106,7 +106,19 @@ class Cloudmgrws(object):
                            'RMWORK'		: tomcat.rmwork,
                            'RMWORK_WITH_PARAMS'	: tomcat.rmwork_with_params,
                           },
+        ( 'TOM' )	: {
+                           'STATUS'		: tomcat.status,
+                           'STARTUP'		: tomcat.startup,
+                           'SHUTDOWN'		: tomcat.shutdown,
+                           'RMWORK'		: tomcat.rmwork,
+                           'RMWORK_WITH_PARAMS'	: tomcat.rmwork_with_params,
+                          },
         ( 'MYSQL' )	: {
+                           'STATUS'	: mysql.status,
+                           'STARTUP'	: mysql.startup,
+                           'SHUTDOWN'	: mysql.shutdown,
+                          },
+        ( 'MYS' )	: {
                            'STATUS'	: mysql.status,
                            'STARTUP'	: mysql.startup,
                            'SHUTDOWN'	: mysql.shutdown,

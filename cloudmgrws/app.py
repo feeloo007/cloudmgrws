@@ -107,12 +107,29 @@ class Cloudmgrws(object):
                            'RMWORK'		: tomcat.rmwork,
                            'RMWORK_WITH_PARAMS'	: tomcat.rmwork_with_params,
                           },
+        ( 'TOM' )	: {
+                           'STATUS'		: tomcat.status,
+                           'STARTUP'		: tomcat.startup,
+                           'SHUTDOWN'		: tomcat.shutdown,
+                           'RMWORK'		: tomcat.rmwork,
+                           'RMWORK_WITH_PARAMS'	: tomcat.rmwork_with_params,
+                          },
         ( 'JBOSS' )    : {
                            'STATUS'             : jboss.status,
                            'STARTUP'            : jboss.startup,
                            'SHUTDOWN'           : jboss.shutdown,
                           },
         ( 'MYSQL' )	: {
+                           'STATUS'	: mysql.status,
+                           'STARTUP'	: mysql.startup,
+                           'SHUTDOWN'	: mysql.shutdown,
+                           'EXECUTE'	: mysql.execute,
+                           'DUMP'	: mysql.dump,
+			   'RM_DUMPFILE'				\
+                                        : mysql.rm_dumpfile,
+                           'CHECK_ENV'	: mysql.check_env,
+                          },
+        ( 'MYS' )	: {
                            'STATUS'	: mysql.status,
                            'STARTUP'	: mysql.startup,
                            'SHUTDOWN'	: mysql.shutdown,

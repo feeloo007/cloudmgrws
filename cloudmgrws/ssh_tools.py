@@ -98,13 +98,25 @@ def manage_ssh( f ):
         response.accepted_commands      = []
         response.is_ok                  = False
 
-    	remote_server_name          	= '%s-%s-%s-%s-%s' % (
-            topology_params.appcode,
-            topology_params.env,
-            topology_params.appcomp,
-            topology_params.num_component,
-            topology_params.aera
-        )
+	if len( topology_params.aera ) != 2:
+
+            remote_server_name          	= '%s-%s-%s-%s-%s' % (
+                topology_params.appcode,
+                topology_params.env,
+                topology_params.appcomp,
+                topology_params.num_component,
+                topology_params.aera
+            )
+
+	else:
+
+            remote_server_name          	= '%s-%s-%s-%s%s' % (
+                topology_params.appcode,
+                topology_params.env,
+                topology_params.aera,
+                topology_params.appcomp,
+                topology_params.num_component
+            )
 
         try:
 

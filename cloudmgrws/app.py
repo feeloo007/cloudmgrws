@@ -104,6 +104,7 @@ class Cloudmgrws(object):
                            'STARTUP'		: tomcat.startup,
                            'SHUTDOWN'		: tomcat.shutdown,
                            'RMWORK'		: tomcat.rmwork,
+                           'JSTACK'		: tomcat.jstack,
                            'RMWORK_WITH_PARAMS'	: tomcat.rmwork_with_params,
                           },
         ( 'TOM' )	: {

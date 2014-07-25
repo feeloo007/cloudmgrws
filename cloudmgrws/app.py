@@ -107,6 +107,7 @@ class Cloudmgrws(object):
                            'RMWORK'		: tomcat.rmwork,
                            'JSTACK'		: tomcat.jstack,
                            'RMWORK_WITH_PARAMS'	: tomcat.rmwork_with_params,
+                           'WAR_INSTALLER'	: tomcat.war_installer,
                           },
         ( 'TOM' )	: {
                            'STATUS'		: tomcat.status,
@@ -114,6 +115,7 @@ class Cloudmgrws(object):
                            'SHUTDOWN'		: tomcat.shutdown,
                            'RMWORK'		: tomcat.rmwork,
                            'RMWORK_WITH_PARAMS'	: tomcat.rmwork_with_params,
+                           'WAR_INSTALLER'	: tomcat.war_installer,
                           },
         ( 'JBOSS' )    : {
                            'STATUS'             : jboss.status,

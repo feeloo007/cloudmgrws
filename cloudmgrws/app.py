@@ -95,6 +95,11 @@ class Cloudmgrws(object):
                            'FTP_STARTUP'	: ftp_installer.startup,
                            'FTP_SHUTDOWN'	: ftp_installer.shutdown,
                           },
+        ( 'HTP' )	: {
+                           'STATUS'	: httpd.status,
+                           'STARTUP'	: httpd.startup,
+                           'SHUTDOWN'	: httpd.shutdown,
+                          },
         ( 'HTTPD' )	: {
                            'STATUS'	: httpd.status,
                            'STARTUP'	: httpd.startup,

@@ -4,6 +4,7 @@ from 	cloudmgrws.mysql.startup  	import  startup
 from 	cloudmgrws.mysql.shutdown 	import  shutdown
 from 	cloudmgrws.mysql.execute 	import  execute
 from 	cloudmgrws.mysql.dump 		import  dump
+from 	cloudmgrws.mysql.dumphex 	import  dumphex
 from 	cloudmgrws.mysql.rm_dumpfile 	import  rm_dumpfile
 from 	cloudmgrws.mysql.check_env 	import  check_env
 
@@ -61,6 +62,14 @@ d_envs    		=						\
                     PackageLoader(
                         __name__,
                         'dump_templates'
+                )
+           ),
+        'dumphex'	:
+            Environment(
+                loader =						\
+                    PackageLoader(
+                        __name__,
+                        'dumphex_templates'
                 )
            ),
         'rm_dumpfile'	:

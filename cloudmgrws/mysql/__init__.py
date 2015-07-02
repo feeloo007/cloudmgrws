@@ -5,6 +5,7 @@ from 	cloudmgrws.mysql.shutdown 	import  shutdown
 from 	cloudmgrws.mysql.execute 	import  execute
 from 	cloudmgrws.mysql.dump 		import  dump
 from 	cloudmgrws.mysql.dumphex 	import  dumphex
+from 	cloudmgrws.mysql.dumpej1 	import  dumpej1
 from 	cloudmgrws.mysql.rm_dumpfile 	import  rm_dumpfile
 from 	cloudmgrws.mysql.check_env 	import  check_env
 
@@ -70,6 +71,14 @@ d_envs    		=						\
                     PackageLoader(
                         __name__,
                         'dumphex_templates'
+                )
+           ),
+        'dumpej1'	:
+            Environment(
+                loader =						\
+                    PackageLoader(
+                        __name__,
+                        'dumpej1_templates'
                 )
            ),
         'rm_dumpfile'	:

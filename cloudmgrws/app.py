@@ -129,6 +129,11 @@ class Cloudmgrws(object):
                            'STARTUP'            : jboss.startup,
                            'SHUTDOWN'           : jboss.shutdown,
                           },
+        ( 'JBS' )    : {
+                           'STATUS'             : jboss.status,
+                           'STARTUP'            : jboss.startup,
+                           'SHUTDOWN'           : jboss.shutdown,
+                          },
         ( 'ALF' )    : {
                            'STATUS'             : alfresco.status,
                            'STARTUP'            : alfresco.startup,

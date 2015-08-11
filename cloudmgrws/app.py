@@ -4,6 +4,7 @@ import 	tools
 import 	ssh_tools
 import 	tomcat
 import  jboss
+import  alfresco
 import 	mysql
 import	httpd
 import 	ftp_installer
@@ -127,6 +128,11 @@ class Cloudmgrws(object):
                            'STATUS'             : jboss.status,
                            'STARTUP'            : jboss.startup,
                            'SHUTDOWN'           : jboss.shutdown,
+                          },
+        ( 'ALF' )    : {
+                           'STATUS'             : alfresco.status,
+                           'STARTUP'            : alfresco.startup,
+                           'SHUTDOWN'           : alfresco.shutdown,
                           },
         ( 'MYSQL' )	: {
                            'STATUS'	: mysql.status,

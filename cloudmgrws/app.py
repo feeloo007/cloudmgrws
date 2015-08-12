@@ -147,6 +147,7 @@ class Cloudmgrws(object):
                            'DUMP'	: mysql.dump,
                            'DUMPHEX'	: mysql.dumphex,
                            'DUMPEJ1'	: mysql.dumpej1,
+                           'DDUMP'	: mysql.ddump,
 			   'RM_DUMPFILE'				\
                                         : mysql.rm_dumpfile,
                            'CHECK_ENV'	: mysql.check_env,
@@ -159,6 +160,7 @@ class Cloudmgrws(object):
                            'DUMP'	: mysql.dump,
                            'DUMPHEX'	: mysql.dumphex,
                            'DUMPEJ1'	: mysql.dumpej1,
+                           'DDUMP'	: mysql.ddump,
 			   'RM_DUMPFILE'				\
                                         : mysql.rm_dumpfile,
                            'CHECK_ENV'	: mysql.check_env,

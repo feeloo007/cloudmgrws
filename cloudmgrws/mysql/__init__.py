@@ -3,7 +3,7 @@ from 	cloudmgrws.mysql.status   	import  status
 from 	cloudmgrws.mysql.startup  	import  startup
 from 	cloudmgrws.mysql.shutdown 	import  shutdown
 from 	cloudmgrws.mysql.execute 	import  execute
-from 	cloudmgrws.mysql.dump 		import  dump
+from 	cloudmgrws.mysql.dump 		import  dump,ddump
 from 	cloudmgrws.mysql.dumphex 	import  dumphex
 from 	cloudmgrws.mysql.dumpej1 	import  dumpej1
 from 	cloudmgrws.mysql.rm_dumpfile 	import  rm_dumpfile

@@ -6,6 +6,7 @@ import 	tomcat
 import  jboss
 import  alfresco
 import 	mysql
+import  postgresql
 import	httpd
 import 	ftp_installer
 import 	os
@@ -152,6 +153,14 @@ class Cloudmgrws(object):
 			   'RM_DUMPFILE'				\
                                         : mysql.rm_dumpfile,
                            'CHECK_ENV'	: mysql.check_env,
+                          },
+        ( 'PSQ' )       : {
+                           'STATUS'     : postgresql.status,
+                           #'STARTUP'    : postgresql.startup,
+                           #'SHUTDOWN'   : postgresql.shudown,
+                           #'EXECUTE'    : postgresql.execute,
+                           #'DUMP'       : postgresql.dump,
+                           #'RM_DUMPFILE': postgresql.rm_dumpfile,
                           },
         ( 'MYS' )	: {
                            'STATUS'	: mysql.status,

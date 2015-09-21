@@ -1,7 +1,7 @@
 # -*- encoding: utf8 -*-
 from 	cloudmgrws.postgresql.status   	import  status
 from 	cloudmgrws.postgresql.startup  	import  startup
-#from 	cloudmgrws.postgresql.shutdown 	import  shutdown
+from 	cloudmgrws.postgresql.shutdown 	import  shutdown
 #from 	cloudmgrws.postgresql.execute 	import  execute
 #from 	cloudmgrws.postgresql.dump 	import  dump
 #from 	cloudmgrws.postgresql.rm_dumpfile 	import  rm_dumpfile

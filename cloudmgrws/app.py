@@ -156,7 +156,7 @@ class Cloudmgrws(object):
                           },
         ( 'PSQ' )       : {
                            'STATUS'     : postgresql.status,
-                           #'STARTUP'    : postgresql.startup,
+                           'STARTUP'    : postgresql.startup,
                            #'SHUTDOWN'   : postgresql.shudown,
                            #'EXECUTE'    : postgresql.execute,
                            #'DUMP'       : postgresql.dump,

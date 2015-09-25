@@ -6,7 +6,7 @@ STARTUP_COMMAND					= 'startup'
 CHECK_STATUS_COMMAND 				= 'check_status'
 
 checks = {
-    STARTUP_COMMAND				: 'source $HOME/.bash_profile ; pg_ctl -l $PGDATA/pg_log/postgresql.log -w start',
+    STARTUP_COMMAND				: 'source $HOME/.bash_profile ; pg_ctl -l $HOME/logs/.postgresql.log -w start',
     CHECK_STATUS_COMMAND			: 'source $HOME/.bash_profile ; pg_ctl status'
 }
 

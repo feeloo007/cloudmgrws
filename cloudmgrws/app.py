@@ -158,7 +158,7 @@ class Cloudmgrws(object):
                            'STATUS'     : postgresql.status,
                            'STARTUP'    : postgresql.startup,
                            'SHUTDOWN'   : postgresql.shutdown,
-                           #'EXECUTE'    : postgresql.execute,
+                           'EXECUTE'    : postgresql.execute,
                            #'DUMP'       : postgresql.dump,
                            #'RM_DUMPFILE': postgresql.rm_dumpfile,
                           },
